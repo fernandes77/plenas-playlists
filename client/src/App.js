@@ -23,13 +23,13 @@ const App = () => {
     }
     return hashParams;
   };
-
   const params = getHashParams();
 
   useEffect(() => {
     setLoggedIn(params.access_token ? true : false);
     spotifyWebApi.setAccessToken(params.access_token);
   });
+
   return (
     <div className="container">
       <div className="wrapper">

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './styles.css';
 
+import AddTracks from '../AddTracks';
+
 import Spotify from 'spotify-web-api-js';
 
 const CreatePlaylist = () => {
@@ -8,6 +10,8 @@ const CreatePlaylist = () => {
   const [userId, setUserId] = useState('');
   const [playlistName, setPlaylistName] = useState('');
   const [playlistDescription, setPlaylistDescription] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const spotifyWebApi = new Spotify();
 
@@ -34,10 +38,17 @@ const CreatePlaylist = () => {
       })
       .then((res) => {
         console.log(res);
+        setSuccess(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError('Ops, ocorreu um erro.');
       });
   };
 
-  return (
+  return success ? (
+    <AddTracks />
+  ) : (
     <div className="create-playlist">
       <h2>Olá, {userName}</h2>
       <div>
@@ -60,6 +71,7 @@ const CreatePlaylist = () => {
       <a type="submit" className="btn" onClick={() => handlePlaylistSubmit()}>
         CRIAR PLAYLIST
       </a>
+      <small>{error}</small>
     </div>
   );
 };
