@@ -1,0 +1,19 @@
+.create-playlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 35vh;
+  text-align: center;
+}
+
+.create-playlist h2 {
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.create-playlist h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}

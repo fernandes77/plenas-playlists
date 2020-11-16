@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+
 :root {
-  --color-background: #000;
+  --background: #191414;
+  --primary: #3a1db9;
+  --white: #eee;
+  --grey: #ccc;
 
   font-size: 60%;
 }
@@ -13,15 +18,52 @@
 html,
 body,
 .container {
-  width: 100vw;
   height: 100vh;
 }
 
 body {
-  background-color: var(--color-background);
+  color: var(--white);
+  background-color: var(--background);
+  font-family: 'Heebo', sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--white);
+  font-weight: 400;
 }
 
 .container {
   display: flex;
   justify-content: center;
+}
+
+.wrapper {
+  width: min(600px, 100vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  color: var(--white);
+  background-color: var(--primary);
+  text-decoration: none;
+  padding: 1.2rem 4rem;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.btn:active {
+  opacity: 0.8;
 }
