@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './styles.css';
+import { removeValueFromArray } from '../../utils/removeFromArray';
 
 import Spotify from 'spotify-web-api-js';
 
-const AddTracks = () => {
+const AddTracks = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [addedTracks, setAddedTracks] = useState([]);
 
   const spotifyWebApi = new Spotify();
 
@@ -20,7 +22,23 @@ const AddTracks = () => {
     });
   };
 
-  const handleTrackSubmit = () => {};
+  const handleTrackAdditionOrRemoval = (trackUri) => {
+    let newTrackList = addedTracks;
+    if (!addedTracks.includes(trackUri)) {
+
+      newTrackList.push(trackUri);
+      setAddedTracks(newTrackList);
+
+      spotifyWebApi.addTracksToPlaylist(props.playlistId, [trackUri]);
+    } else {
+
+      newTrackList = removeValueFromArray(newTrackList, trackUri);
+      setAddedTracks(newTrackList);
+
+      spotifyWebApi.removeTracksFromPlaylist(props.playlistId, [trackUri]);
+    }
+    console.log(addedTracks);
+  };
 
   return (
     <div className="add-tracks">
@@ -32,15 +50,13 @@ const AddTracks = () => {
       </a>
       <ul>
         {searchResults.map((result) => (
-          <>
-            <li key={result.id}>
-              {result.name}
-              <small>{result.artists.map((artist) => artist.name)}</small>
-            </li>
-            <button key={result.id} onClick={(e) => handleTrackSubmit(e)}>
+          <li key={result.id}>
+            {result.name}
+            <small>{result.artists.map((artist) => artist.name)}</small>
+            <button onClick={() => handleTrackAdditionOrRemoval(result.uri)}>
               Adicionar
             </button>
-          </>
+          </li>
         ))}
       </ul>
     </div>

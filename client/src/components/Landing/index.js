@@ -11,7 +11,7 @@ const Landing = () => {
           rápida
         </p>
       </div>
-      <a className="btn" href="http://localhost:8888">
+      <a className="btn" href="http://localhost:8888/login">
         FAÇA LOGIN NO SPOTIFY
       </a>
     </div>

@@ -10,17 +10,16 @@ const CreatePlaylist = () => {
   const [userId, setUserId] = useState('');
   const [playlistName, setPlaylistName] = useState('');
   const [playlistDescription, setPlaylistDescription] = useState('');
+  const [playlistId, setPlaylistId] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
   const spotifyWebApi = new Spotify();
 
   spotifyWebApi.getMe().then((res) => {
-    console.log(res);
     setUserName(res.display_name);
     setUserId(res.id);
   });
-  console.log(userName);
 
   const handleNameChange = (e) => {
     setPlaylistName(e.target.value);
@@ -38,6 +37,7 @@ const CreatePlaylist = () => {
       })
       .then((res) => {
         console.log(res);
+        setPlaylistId(res.id);
         setSuccess(true);
       })
       .catch((err) => {
@@ -47,7 +47,7 @@ const CreatePlaylist = () => {
   };
 
   return success ? (
-    <AddTracks />
+    <AddTracks playlistId={playlistId} />
   ) : (
     <div className="create-playlist">
       <h2>Olá, {userName}</h2>
