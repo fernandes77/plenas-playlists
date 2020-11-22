@@ -8,7 +8,7 @@ const Landing = () => {
   const [loginUrl, setLoginUrl] = useState('http://localhost:8888/login');
 
   const prodOrDev = () => {
-    if (window.location === 'https://plenas-playlists.herokuapp.com/')
+    if (window.location.href === 'https://plenas-playlists.herokuapp.com/')
       setLoginUrl('https://plenas-playlists.herokuapp.com/login');
   }
 
