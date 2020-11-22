@@ -16,7 +16,7 @@ var path = require('path');
 
 var client_id = '4c9f28330dea4310b470a44fc13813a7'; // Your client id
 var client_secret = '95f2d9e6161b4ecea44b6ca613b7df2a'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = 'https://desafio-playlists.herokuapp.com/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
