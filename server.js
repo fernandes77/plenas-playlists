@@ -17,7 +17,7 @@ var path = require('path');
 var host;
 var serverHost;
 if (process.env.NODE_ENV === 'production') {
-  host = 'https://desafio-playlists.herokuapp.com';
+  host = 'https://plenas-playlists.herokuapp.com';
   serverHost = host;
 } else {
   host = 'http://localhost:3000';
