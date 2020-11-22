@@ -9,11 +9,11 @@ import spotifyApi from '../../services/spotifyApi';
 
 const CreatePlaylist = (props) => {
   const [userId, setUserId] = useState('');
+  const [playlistId, setPlaylistId] = useState('');
   const [playlistName, setPlaylistName] = useState('');
   const [playlistDescription, setPlaylistDescription] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [playlistUri, setPlaylistUri] = useState('');
 
   spotifyApi.getMe().then((res) => {
     setUserId(res.id);
@@ -35,7 +35,8 @@ const CreatePlaylist = (props) => {
       })
       .then((res) => {
         console.log(res);
-        setPlaylistUri(`/edit-playlist/${res.id}`);
+        sessionStorage.setItem('playlistId', res.id);
+        setPlaylistId(res.id);
         setSuccess(true);
       })
       .catch((err) => {
@@ -64,7 +65,7 @@ const CreatePlaylist = (props) => {
         <button className="btn create" onClick={() => handlePlaylistSubmit()}>
           Criar
         </button>
-        {success ? <Redirect to={playlistUri} /> : <small>{error}</small>}
+        {success ? <Redirect to={`/edit-playlist/${playlistId}`} /> : <small>{error}</small>}
       </div>
     </>
   );

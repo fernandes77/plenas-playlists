@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
 import emptyIcon from '../../assets/icons/empty.png';
 import seePlaylist from '../../assets/icons/close-playlist.svg';
-import { Link } from 'react-router-dom';
-import Header from '../../components/Header';
+
 import spotifyApi from '../../services/spotifyApi';
-import { removeValueFromArray } from '../../utils/utils';
 
 const ViewPlaylist = (props) => {
   const [playlistId, setPlaylistId] = useState('');
@@ -16,7 +15,7 @@ const ViewPlaylist = (props) => {
   const [tracks, setTracks] = useState([]);
 
   useEffect(() => {
-    const id = props.match.params.playlistId;
+    const id = sessionStorage.getItem('playlistId');
     setPlaylistId(id);
     spotifyApi.getPlaylist(id).then((res) => {
       setPlaylistName(res.name);

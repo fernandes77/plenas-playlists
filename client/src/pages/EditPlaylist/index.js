@@ -19,7 +19,7 @@ const EditPlaylist = (props) => {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
-    const id = props.match.params.playlistId;
+    const id = sessionStorage.getItem('playlistId');
     setPlaylistId(id);
     console.log(playlistId);
     spotifyApi.getPlaylist(id).then((res) => {

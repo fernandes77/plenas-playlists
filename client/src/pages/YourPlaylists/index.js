@@ -47,6 +47,7 @@ const YourPlaylists = (props) => {
                 </p>
               </div>
               <Link
+                onClick={() => sessionStorage.setItem('playlistId', playlist.id)}
                 to={`/edit-playlist/${playlist.id}`}
                 className="btn"
               >
