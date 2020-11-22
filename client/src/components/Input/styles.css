@@ -1,0 +1,23 @@
+.input-block {
+  position: relative;
+}
+
+.input-block + .input-block {
+  margin-top: 1.4rem;
+}
+
+.input-block label {
+  font-size: 1.4rem;
+}
+
+.input-block input {
+  display: block;
+  margin-top: 0.8rem;
+  background-color: var(--grey);
+  border: 1px solid var(--primary);
+  outline: 0;
+  padding: 0 1.6rem;
+  font: 1.6rem Heebo;
+  width: 25rem;
+  height: 5rem;
+}

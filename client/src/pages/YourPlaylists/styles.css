@@ -1,0 +1,40 @@
+.your-playlists ul {
+  list-style: none;
+  width: min(519px, 75vw);
+}
+
+.your-playlists li {
+  margin-bottom: -0.7rem;
+}
+
+.your-playlists li .btn {
+  display: inline;
+  padding: 0.5rem 1rem;
+  position: relative;
+  top: 1rem;
+  float: right;
+}
+
+.your-playlists li img {
+  width: 5rem;
+  display: inline-block;
+}
+
+.playlist-text {
+  display: inline-block;
+  height: 5rem;
+  margin-left: 1rem;
+  position: relative;
+  bottom: 1.2rem;
+}
+
+.playlist-text h3 {
+  display: inline;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.playlist-text p {
+  font-size: 1.2rem;
+  color: var(--grey);
+}

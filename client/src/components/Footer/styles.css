@@ -1,0 +1,21 @@
+footer {
+  width: 100vw;
+  height: 8rem;
+  color: var(--white);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+footer h3 {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+}
+
+footer a:link {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+footer a:visited {
+  color: var(--primary);
+}

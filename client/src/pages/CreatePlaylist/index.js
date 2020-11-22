@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
 
-import AddTracks from '../AddTracks';
+import Header from '../../components/Header';
+import Input from '../../components/Input';
 
-import Spotify from 'spotify-web-api-js';
+import spotifyApi from '../../services/spotifyApi';
 
-const CreatePlaylist = () => {
-  const [userName, setUserName] = useState('');
+const CreatePlaylist = (props) => {
   const [userId, setUserId] = useState('');
   const [playlistName, setPlaylistName] = useState('');
   const [playlistDescription, setPlaylistDescription] = useState('');
-  const [playlistId, setPlaylistId] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [playlistUri, setPlaylistUri] = useState('');
 
-  const spotifyWebApi = new Spotify();
-
-  spotifyWebApi.getMe().then((res) => {
-    setUserName(res.display_name);
+  spotifyApi.getMe().then((res) => {
     setUserId(res.id);
   });
 
@@ -30,14 +28,14 @@ const CreatePlaylist = () => {
   };
 
   const handlePlaylistSubmit = () => {
-    spotifyWebApi
+    spotifyApi
       .createPlaylist(userId, {
         name: playlistName,
         description: playlistDescription,
       })
       .then((res) => {
         console.log(res);
-        setPlaylistId(res.id);
+        setPlaylistUri(`/edit-playlist/${res.id}`);
         setSuccess(true);
       })
       .catch((err) => {
@@ -46,33 +44,29 @@ const CreatePlaylist = () => {
       });
   };
 
-  return success ? (
-    <AddTracks playlistId={playlistId} />
-  ) : (
-    <div className="create-playlist">
-      <h2>Olá, {userName}</h2>
-      <div>
-        <h3>Nomeie a sua playlist...</h3>
-        <input
-          className="playlist-name"
-          type="text"
+  return (
+    <>
+      <Header />
+      <div className="create-playlist">
+        <button className="btn btn-back" onClick={() => props.history.goBack()}>
+          &larr; Voltar
+        </button>
+        <Input
+          label="Nomeie sua playlist..."
+          name="name"
           onChange={(e) => handleNameChange(e)}
-          required
         />
-      </div>
-      <div>
-        <h3>...e dê uma descrição (opcional)</h3>
-        <input
-          className="playlist-description"
-          type="text"
+        <Input
+          label="...e dê uma descrição (opcional)"
+          name="name"
           onChange={(e) => handleDescriptionChange(e)}
         />
+        <button className="btn create" onClick={() => handlePlaylistSubmit()}>
+          Criar
+        </button>
+        {success ? <Redirect to={playlistUri} /> : <small>{error}</small>}
       </div>
-      <a type="submit" className="btn" onClick={() => handlePlaylistSubmit()}>
-        CRIAR PLAYLIST
-      </a>
-      <small>{error}</small>
-    </div>
+    </>
   );
 };
 

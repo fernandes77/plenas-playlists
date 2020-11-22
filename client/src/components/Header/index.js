@@ -1,11 +1,12 @@
 import React from 'react';
 import './styles.css';
+import Logo from '../Logo';
 
 const Header = () => {
   return (
     <header>
       <a href="/" className="logo-link">
-        <h1 className="logo">Plenas Playlists</h1>
+        <Logo />
       </a>
     </header>
   );

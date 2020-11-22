@@ -1,0 +1,67 @@
+.edit-playlist {
+  width: min(519px, 75vw);
+}
+
+.edit-playlist h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.edit-playlist .input-block {
+  margin-top: 2rem;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.edit-playlist .input-block input {
+  width: 25rem;
+  height: 5rem;
+}
+
+.edit-playlist form button {
+  display: block;
+  margin: 1rem auto 0;
+}
+
+.edit-playlist ul {
+  margin-top: 4rem;
+  list-style: none;
+}
+
+.edit-playlist ul li {
+  display: block;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.edit-playlist ul li img {
+  width: 5rem;
+  display: inline;
+  float: left;
+}
+
+.add-track {
+  border: none;
+  outline: none;
+  background-color: var(--green);
+  color: var(--white);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.open-playlist {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 6rem;
+}

@@ -1,0 +1,9 @@
+.logo {
+  text-align: center;
+  color: var(--primary);
+  font-family: 'Pacifico', cursive;
+  font-weight: 500;
+  line-height: 1;
+  text-shadow: 1px 1px var(--white);
+  font-size: calc(0.5rem + 9.5vw);
+}
