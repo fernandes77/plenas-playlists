@@ -10,7 +10,7 @@ import spotifyApi from '../../services/spotifyApi';
 const YourPlaylists = () => {
   const [playlists, setPlaylists] = useState([]);
 
-  useEffect(() => {
+  const getPlaylists = () => {
     spotifyApi.getMe().then((res) => {
       const userId = res.id;
       spotifyApi.getUserPlaylists({ limit: 50 }).then((res) => {
@@ -23,6 +23,10 @@ const YourPlaylists = () => {
         setPlaylists(editablePlaylists);
       });
     });
+  };
+
+  useEffect(() => {
+    getPlaylists();
   }, []);
 
   return (

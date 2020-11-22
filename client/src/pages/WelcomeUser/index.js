@@ -15,7 +15,7 @@ const WelcomeUser = () => {
   const [userProduct, setUserProduct] = useState(0);
   const [userUrl, setUserUrl] = useState('');
 
-  useEffect(() => {
+  const getUser = () => {
     spotifyApi.getMe().then((res) => {
       console.log(res);
       setUserName(res.display_name);
@@ -25,6 +25,10 @@ const WelcomeUser = () => {
       setUserProduct(res.product);
       setUserUrl(res.external_urls.spotify);
     });
+  }
+
+  useEffect(() => {
+    getUser();
   }, []);
 
   return (

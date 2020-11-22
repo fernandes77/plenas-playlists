@@ -20,11 +20,15 @@ const Home = () => {
     return hashParams;
   };
 
-  useEffect(() => {
+  const setAccessToken = () => {
     const params = getHashParams();
     setLoggedIn(params.access_token ? true : false);
     sessionStorage.setItem('access_token', params.access_token);
     spotifyApi.setAccessToken(params.access_token);
+  }
+
+  useEffect(() => {
+    setAccessToken();
   }, []);
 
   return loggedIn ? <Redirect to="/user" /> : <Landing />;

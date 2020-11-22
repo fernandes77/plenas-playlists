@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './styles.css';
 
@@ -7,7 +7,7 @@ import Input from '../../components/Input';
 
 import spotifyApi from '../../services/spotifyApi';
 
-const CreatePlaylist = (props) => {
+const CreatePlaylist = () => {
   const [userId, setUserId] = useState('');
   const [playlistId, setPlaylistId] = useState('');
   const [playlistName, setPlaylistName] = useState('');
@@ -15,9 +15,11 @@ const CreatePlaylist = (props) => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  spotifyApi.getMe().then((res) => {
-    setUserId(res.id);
-  });
+  useEffect(() => {
+    spotifyApi.getMe().then((res) => {
+      setUserId(res.id);
+    });
+  }, []);
 
   const handleNameChange = (e) => {
     setPlaylistName(e.target.value);
@@ -65,7 +67,11 @@ const CreatePlaylist = (props) => {
         <button className="btn create" onClick={() => handlePlaylistSubmit()}>
           Criar
         </button>
-        {success ? <Redirect to={`/search-tracks/${playlistId}`} /> : <small>{error}</small>}
+        {success ? (
+          <Redirect to={`/search-tracks/${playlistId}`} />
+        ) : (
+          <small>{error}</small>
+        )}
       </div>
     </>
   );

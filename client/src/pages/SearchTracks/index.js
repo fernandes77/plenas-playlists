@@ -18,17 +18,6 @@ const SearchTracks = (props) => {
 
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
-  useEffect(() => {
-    const id = sessionStorage.getItem('playlistId');
-    setPlaylistId(id);
-    console.log(playlistId);
-    spotifyApi.getPlaylist(id).then((res) => {
-      console.log(res);
-      setPlaylistName(res.name);
-      setTracks(res.tracks.items.map((trackObject) => trackObject.track.uri));
-    });
-  }, []);
-
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -55,6 +44,21 @@ const SearchTracks = (props) => {
     console.log(tracks);
     forceUpdate();
   };
+
+  const getPlaylist = () => {
+    const id = sessionStorage.getItem('playlistId');
+    setPlaylistId(id);
+    console.log(playlistId);
+    spotifyApi.getPlaylist(id).then((res) => {
+      console.log(res);
+      setPlaylistName(res.name);
+      setTracks(res.tracks.items.map((trackObject) => trackObject.track.uri));
+    });
+  }
+
+  useEffect(() => {
+    getPlaylist();
+  }, []);
 
   return (
     <>

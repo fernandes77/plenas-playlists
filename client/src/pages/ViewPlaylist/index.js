@@ -14,18 +14,6 @@ const ViewPlaylist = (props) => {
   const [playlistDescription, setPlaylistDescription] = useState('');
   const [tracks, setTracks] = useState([]);
 
-  useEffect(() => {
-    const id = sessionStorage.getItem('playlistId');
-    setPlaylistId(id);
-    spotifyApi.getPlaylist(id).then((res) => {
-      setPlaylistName(res.name);
-      if (res.images.length > 0) setPlaylistImage(res.images[0].url);
-      setPlaylistOwner(res.owner.display_name);
-      setPlaylistDescription(res.description);
-      setTracks(res.tracks.items);
-    });
-  }, []);
-
   const handleTrackRemoval = (trackUri) => {
     spotifyApi.removeTracksFromPlaylist(playlistId, [trackUri]).then((res) => {
       console.log(res);
@@ -37,6 +25,22 @@ const ViewPlaylist = (props) => {
       console.log(tracks);
     });
   };
+
+  const getPlaylist = () => {
+    const id = sessionStorage.getItem('playlistId');
+    setPlaylistId(id);
+    spotifyApi.getPlaylist(id).then((res) => {
+      setPlaylistName(res.name);
+      if (res.images.length > 0) setPlaylistImage(res.images[0].url);
+      setPlaylistOwner(res.owner.display_name);
+      setPlaylistDescription(res.description);
+      setTracks(res.tracks.items);
+    });
+  }
+
+  useEffect(() => {
+    getPlaylist();
+  }, []);
 
   return (
     <div className="view-playlist">
