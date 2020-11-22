@@ -1,35 +1,52 @@
-# Spotify Accounts Authentication Examples
+## Plenas Playlists
 
-This project contains basic demos showing the different OAuth 2.0 flows for [authenticating against the Spotify Web API](https://developer.spotify.com/web-api/authorization-guide/).
+Um web app mobile que cria e edita playlists utilizando a API do Spotify.
 
-These examples cover:
+## Fotos do projeto
 
-* Authorization Code flow
-* Client Credentials flow
-* Implicit Grant flow
+![WelcomeUser](relative/path/to/screenshot1.jpg?raw=true "WelcomeUser")
+![SearchTracks](relative/path/to/screenshot2.jpg?raw=true "SearchTracks")
 
-## Installation
+## Instruções de Instalação
 
-These examples run on Node.js. On [its website](http://www.nodejs.org/download/) you can find instructions on how to install it. You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm.
+Faça um clone deste repositório. Você vai precisar de 'node' e 'npm' instalados globalmente na sua máquina.
 
-Once installed, clone the repository and install its dependencies running:
+Instalação:
 
-    $ npm install
+`npm install`  
 
-### Using your own credentials
-You will need to register your app and get your own credentials from the Spotify for Developers Dashboard.
+To Run Test Suite:  
 
-To do so, go to [your Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard) and create your application. For the examples, we registered these Redirect URIs:
+`npm test`  
 
-* http://localhost:8888 (needed for the implicit grant flow)
-* http://localhost:8888/callback
+Iniciar app:
 
-Once you have created your app, replace the `client_id`, `redirect_uri` and `client_secret` in the examples with the ones you get from My Applications.
+`cd client`
+`npm start` 
 
-## Running the examples
-In order to run the different examples, open the folder with the name of the flow you want to try out, and run its `app.js` file. For instance, to run the Authorization Code example do:
+Iniciar servidor:
 
-    $ cd authorization_code
-    $ node app.js
+`node server.js`
 
-Then, open `http://localhost:8888` in a browser.
+O app vai abrir em:
+
+`localhost:3000`  
+
+## Reflexão
+
+  - What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
+  - What did you set out to build?
+  - Why was this project challenging and therefore a really good learning experience?
+  - What were some unexpected obstacles?
+  - What tools did you use to implement this project?
+      - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.  
+
+#### Example:  
+
+This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+
+Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.  
+
+One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
+
+At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
