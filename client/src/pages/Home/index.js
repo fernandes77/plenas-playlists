@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
 
 import Landing from '../Landing';
-import WelcomeUser from '../WelcomeUser';
 
 import spotifyApi from '../../services/spotifyApi';
 
@@ -19,16 +19,15 @@ const Home = () => {
     }
     return hashParams;
   };
-  const params = getHashParams();
 
   useEffect(() => {
+    const params = getHashParams();
     setLoggedIn(params.access_token ? true : false);
+    sessionStorage.setItem('access_token', params.access_token);
     spotifyApi.setAccessToken(params.access_token);
   }, []);
 
-  return (
-    loggedIn ? (<WelcomeUser />) : (<Landing />)
-  );
+  return loggedIn ? <Redirect to="/user" /> : <Landing />;
 };
 
 export default Home;

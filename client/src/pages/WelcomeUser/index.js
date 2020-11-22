@@ -43,6 +43,13 @@ const WelcomeUser = () => {
           <a target="_blank" href={userUrl} className="btn">
             Ver perfil &#8599;
           </a>
+          <Link
+            onClick={() => sessionStorage.clear()}
+            to="/"
+            className="btn btn-leave"
+          >
+            Sair
+          </Link>
         </div>
         <div className="buttons">
           <Link to="/create-playlist" className="btn btn-welcome">

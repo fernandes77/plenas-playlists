@@ -1,8 +1,8 @@
-.edit-playlist {
+.search-tracks {
   width: min(519px, 75vw);
 }
 
-.edit-playlist h1 {
+.search-tracks h1 {
   font-size: 2.5rem;
   font-weight: 500;
   display: block;
@@ -10,7 +10,7 @@
   margin-top: 1.5rem;
 }
 
-.edit-playlist .input-block {
+.search-tracks .input-block {
   margin-top: 2rem;
   display: inline-block;
   position: relative;
@@ -18,28 +18,29 @@
   transform: translateX(-50%);
 }
 
-.edit-playlist .input-block input {
+.search-tracks .input-block input {
   width: 25rem;
   height: 5rem;
 }
 
-.edit-playlist form button {
+.search-tracks form button {
   display: block;
   margin: 1rem auto 0;
 }
 
-.edit-playlist ul {
+.search-tracks ul {
   margin-top: 4rem;
   list-style: none;
+  padding-bottom: 4rem;
 }
 
-.edit-playlist ul li {
+.search-tracks ul li {
   display: block;
   margin-top: 3rem;
   position: relative;
 }
 
-.edit-playlist ul li img {
+.search-tracks ul li img {
   width: 5rem;
   display: inline;
   float: left;

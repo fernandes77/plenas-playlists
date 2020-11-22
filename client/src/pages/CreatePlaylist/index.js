@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './styles.css';
 
 import Header from '../../components/Header';
@@ -49,9 +49,9 @@ const CreatePlaylist = (props) => {
     <>
       <Header />
       <div className="create-playlist">
-        <button className="btn btn-back" onClick={() => props.history.goBack()}>
+        <Link className="btn btn-back" to="/user">
           &larr; Voltar
-        </button>
+        </Link>
         <Input
           label="Nomeie sua playlist..."
           name="name"
@@ -65,7 +65,7 @@ const CreatePlaylist = (props) => {
         <button className="btn create" onClick={() => handlePlaylistSubmit()}>
           Criar
         </button>
-        {success ? <Redirect to={`/edit-playlist/${playlistId}`} /> : <small>{error}</small>}
+        {success ? <Redirect to={`/search-tracks/${playlistId}`} /> : <small>{error}</small>}
       </div>
     </>
   );

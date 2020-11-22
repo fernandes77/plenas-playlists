@@ -47,7 +47,13 @@ const ViewPlaylist = (props) => {
       <ul>
         {tracks.map((trackObject) => (
           <li key={trackObject.track.id}>
-            <img src={trackObject.track.album.images[0].url} alt="" />
+            <img
+              src={trackObject.track.album.images[0].url}
+              alt=""
+              onClick={() =>
+                window.open(trackObject.track.external_urls.spotify)
+              }
+            />
             <div className="track-text">
               <h3>
                 {trackObject.track.name.slice(0, 23)}
@@ -70,7 +76,7 @@ const ViewPlaylist = (props) => {
           </li>
         ))}
       </ul>
-      <Link to={`/edit-playlist/${playlistId}`}>
+      <Link to={`/search-tracks/${playlistId}`}>
         <img className="close-playlist" src={seePlaylist} />
       </Link>
     </div>

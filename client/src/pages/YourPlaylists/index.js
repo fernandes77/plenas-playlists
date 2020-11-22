@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 
 import spotifyApi from '../../services/spotifyApi';
 
-const YourPlaylists = (props) => {
+const YourPlaylists = () => {
   const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
@@ -29,9 +29,9 @@ const YourPlaylists = (props) => {
     <>
       <Header />
       <div className="your-playlists">
-        <button className="btn btn-back" onClick={() => props.history.goBack()}>
+        <Link className="btn btn-back" to="/user">
           &larr; Voltar
-        </button>
+        </Link>
         <ul>
           {playlists.map((playlist) => (
             <li key={playlist.id}>
@@ -47,8 +47,10 @@ const YourPlaylists = (props) => {
                 </p>
               </div>
               <Link
-                onClick={() => sessionStorage.setItem('playlistId', playlist.id)}
-                to={`/edit-playlist/${playlist.id}`}
+                onClick={() =>
+                  sessionStorage.setItem('playlistId', playlist.id)
+                }
+                to={`/search-tracks/${playlist.id}`}
                 className="btn"
               >
                 &rarr;

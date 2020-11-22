@@ -31,6 +31,7 @@
 .view-playlist ul {
   margin-top: 3rem;
   list-style: none;
+  padding-bottom: 4rem;
 }
 
 .view-playlist ul li {

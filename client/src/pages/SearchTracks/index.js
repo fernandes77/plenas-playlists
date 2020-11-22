@@ -9,7 +9,7 @@ import Input from '../../components/Input';
 
 import spotifyApi from '../../services/spotifyApi';
 
-const EditPlaylist = (props) => {
+const SearchTracks = (props) => {
   const [playlistId, setPlaylistId] = useState('');
   const [playlistName, setPlaylistName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -59,10 +59,10 @@ const EditPlaylist = (props) => {
   return (
     <>
       <Header />
-      <div className="edit-playlist">
-        <button onClick={() => props.history.goBack()} className="btn btn-back">
+      <div className="search-tracks">
+        <Link to="/user" className="btn btn-back">
           &larr; Voltar
-        </button>
+        </Link>
         <h1>{playlistName}</h1>
         <form onSubmit={(e) => handleSearchSubmit(e)}>
           <Input
@@ -74,7 +74,11 @@ const EditPlaylist = (props) => {
         <ul>
           {searchResults.map((result) => (
             <li key={result.id}>
-              <img src={result.album.images[0].url} alt="" />
+              <img
+                src={result.album.images[0].url}
+                alt=""
+                onClick={() => window.open(result.external_urls.spotify)}
+              />
               <div className="track-text">
                 <h3>
                   {result.name.slice(0, 23)}
@@ -107,4 +111,4 @@ const EditPlaylist = (props) => {
   );
 };
 
-export default EditPlaylist;
+export default SearchTracks;

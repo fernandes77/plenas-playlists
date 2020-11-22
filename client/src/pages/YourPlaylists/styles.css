@@ -1,6 +1,8 @@
 .your-playlists ul {
   list-style: none;
   width: min(519px, 75vw);
+  padding-bottom: 4rem;
+  margin-top: 4rem;
 }
 
 .your-playlists li {

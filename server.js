@@ -113,10 +113,6 @@ app.get('/callback', function (req, res) {
         request.get(options, function (error, response, body) {
           console.log(body);
         });
-
-        if (process.env.NODE_ENV === 'production') {
-          
-        }
         
         // we can also pass the token to the browser to make requests from there
         res.redirect(`${host}/#` +
