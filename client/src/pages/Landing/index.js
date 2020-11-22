@@ -14,7 +14,7 @@ const Landing = () => {
           Crie playlists no Spotify com a sua personalidade de maneira simples e
           rápida
         </p>
-        <a href="/login" className="btn">
+        <a href="http://localhost:8888/login" className="btn">
           Login no Spotify
         </a>
       </div>

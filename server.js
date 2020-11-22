@@ -14,9 +14,19 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var path = require('path');
 
+var host;
+var serverHost;
+if (process.env.NODE_ENV === 'production') {
+  host = 'https://desafio-playlists.herokuapp.com';
+  serverHost = host;
+} else {
+  host = 'http://localhost:3000';
+  serverHost = 'http://localhost:8888';
+}
+
 var client_id = '4c9f28330dea4310b470a44fc13813a7'; // Your client id
 var client_secret = '95f2d9e6161b4ecea44b6ca613b7df2a'; // Your secret
-var redirect_uri = 'https://desafio-playlists.herokuapp.com/callback'; // Your redirect uri
+var redirect_uri = `${serverHost}/callback`; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -104,8 +114,12 @@ app.get('/callback', function (req, res) {
           console.log(body);
         });
 
+        if (process.env.NODE_ENV === 'production') {
+          
+        }
+        
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
+        res.redirect(`${host}/#` +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
