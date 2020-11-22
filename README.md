@@ -4,8 +4,8 @@ Um web app mobile que cria e edita playlists utilizando a API do Spotify.
 
 ## Fotos do projeto
 
-![](assets/img/screenshot1.jpg)
-![](assets/img/screenshot2.jpg)
+![](img/screenshot1.jpg)
+![](img/screenshot2.jpg)
 
 ## Instruções de Instalação
 
