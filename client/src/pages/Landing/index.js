@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const Landing = () => {
+  const [loginUrl, setLoginUrl] = useState('http://localhost:8888/login');
+
+  const prodOrDev = () => {
+    if (window.location === 'https://plenas-playlists.herokuapp.com/')
+      setLoginUrl('https://plenas-playlists.herokuapp.com/login');
+  }
+
+  useEffect(() => {
+    prodOrDev();
+  }, []);
+
   return (
     <>
       <Header />
@@ -14,7 +25,7 @@ const Landing = () => {
           Crie playlists no Spotify com a sua personalidade de maneira simples e
           rápida
         </p>
-        <a href="/login" className="btn">
+        <a href={loginUrl} className="btn">
           Login no Spotify
         </a>
       </div>
