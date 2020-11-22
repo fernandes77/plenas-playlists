@@ -12,6 +12,7 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var path = require('path');
 
 var client_id = '4c9f28330dea4310b470a44fc13813a7'; // Your client id
 var client_secret = '95f2d9e6161b4ecea44b6ca613b7df2a'; // Your secret
@@ -142,6 +143,14 @@ app.get('/refresh_token', function (req, res) {
     }
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 const PORT = process.env.PORT || 8888;
 console.log('Listening on ' + PORT);
