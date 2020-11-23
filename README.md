@@ -14,10 +14,6 @@ Instalação:
 
 `npm install`  
 
-To Run Test Suite:  
-
-`npm test`  
-
 Iniciar app:
 
 `cd client`
